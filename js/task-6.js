@@ -4,16 +4,22 @@ let input;
 let total = 0;
 let message;
 
-while (input !== null) {
+while (true) {
   input = prompt('Input the number:');
 
-  if (input !== null) {
-    if (!Number.isNaN(Number(input))) {
-      total += Number(input);
-    } else {
-      alert('NOT A NUMBER');
-    }
+  if (input === null) {
+    break;
   }
+
+  input = Number(input);
+  const notANumber = Number.isNaN(input);
+
+  if (notANumber) {
+    alert('NOT A NUMBER');
+    continue;
+  }
+
+  total += input;
 }
 
 alert(`Total sum is ${total}`);
